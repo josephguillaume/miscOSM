@@ -1,0 +1,11 @@
+Package: miscOSM
+Type: Package
+Title: Misc OSM functions
+Version: 0.1.0
+Author: Joseph Guillaume
+Maintainer: Joseph Guillaume <josephguillaume@gmail.com>
+Description: Functions for use with OpenCPU
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Depends: sf
