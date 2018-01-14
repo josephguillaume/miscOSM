@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Misc OSM functions</title>
+<!-- OpenCPU client library -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//cdn.opencpu.org/opencpu-0.4.js"></script>
+<script>
+    $(document).ready(function(){
+      $("#btn").on("click", function(){
+	    var partu=$("#partu").val();
+		if (partu.substr(0,4)!="http") partu="https://www.openstreetmap.org/api/0.6/way/"+partu+"/full"
+		var buildingu=$("#buildingu").val();
+		if (buildingu.substr(0,4)!="http") buildingu="https://www.openstreetmap.org/api/0.6/way/"+buildingu+"/full"
+		var req = ocpu.rpc("building_covers",{
+			partu : partu,
+			buildingu : buildingu
+		}, function(output){
+			$("#output").text(output);
+		});
+		req.fail(function(){
+		  $("#output").text("Server error: " + req.responseText);
+		});
+	 });
+	});
+</script>
+
+</head>
+<body>
+
+Building part <input id=partu type="text" size=50>
+Building <input id=buildingu type="text" size=50>
+<button name=Submit id=btn>Check cover</button>
+<div id=output></div>
+
+</body>
+</html>
